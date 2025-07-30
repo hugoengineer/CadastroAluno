@@ -1,0 +1,57 @@
+package cadastroaluno;
+
+import com.example.cadastroaluno.HelloApplication;
+import com.example.cadastroaluno.src.Aluno;
+import com.example.cadastroaluno.src.AlunoDAOimpl;
+import com.example.cadastroaluno.src.ConectarBanco;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
+import java.sql.Connection;
+import java.util.List;
+
+public class ControllerTela3_1 {
+    @FXML
+    private Button btnVoltar, btnConfirmar;
+    @FXML
+    private TextArea textoSaida;
+    @FXML
+    private TextField caixaNome;
+
+    private AlunoDAOimpl alunoDAOimpl;
+    private Connection conexao;
+
+
+    @FXML
+    private void initialize() {
+        HelloApplication controle = new HelloApplication();
+        conexao = ConectarBanco.getConnection();
+        alunoDAOimpl = new AlunoDAOimpl(conexao);
+        btnVoltar.setOnMouseClicked(event -> controle.trocarTela("HelloController", "hello-view.fxml", event));
+        btnConfirmar.setOnMouseClicked(event -> {String nome = caixaNome.getText();
+        carregarAlunos(nome);});
+
+    }
+    private void carregarAlunos(String nome) {
+        List<Aluno> alunos = alunoDAOimpl.buscarPorNome(nome);
+
+        if (alunos != null && !alunos.isEmpty()) {
+            textoSaida.clear();
+            for (Aluno aluno : alunos) {
+                textoSaida.appendText("Nome: " + aluno.getNome() + "\n" +
+                        "CPF: " + aluno.getCpf() + "\n" +
+                        "Matrícula: " + aluno.getMatricula() + "\n" +
+                        "Curso: " + aluno.getCurso() + "\n" +
+                        "Turno: " + aluno.getTurno() + "\n" +
+                        "Turma: " + aluno.getTurma() + "\n" +
+                        "Telefone: " + aluno.getTelefone() + "\n" +
+                        "Data de Nascimento: " + AlunoDAOimpl.converterData(aluno.getDatanascimento()) + "\n\n");
+            }
+        } else {
+            textoSaida.setText("Não há alunos cadastrados.");
+        }
+    }
+}
+

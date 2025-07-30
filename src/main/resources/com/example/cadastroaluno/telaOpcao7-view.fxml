@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cadastroaluno.ControllerTela7">
+    <children>
+        <Text layoutX="251.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imprimir  turmas" textAlignment="CENTER" wrappingWidth="195.80938720703125">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Text>
+      <TableView fx:id="tableTabela" layoutX="8.0" layoutY="86.0" prefHeight="328.0" prefWidth="684.0">
+        <columns>
+          <TableColumn fx:id="colNome" prefWidth="125.5999813079834" text="nome" />
+          <TableColumn fx:id="colCpf" prefWidth="90.39996337890625" text="cpf" />
+            <TableColumn fx:id="colMatricula" minWidth="0.0" prefWidth="102.4000244140625" text="matricula" />
+            <TableColumn fx:id="colCurso" prefWidth="65.5999755859375" text="curso" />
+            <TableColumn fx:id="colTurno" prefWidth="68.0" text="turno" />
+            <TableColumn fx:id="colTurma" prefWidth="64.79995727539062" text="turma" />
+            <TableColumn fx:id="colTelefone" prefWidth="90.4000244140625" text="Telefone" />
+            <TableColumn fx:id="colDataNascimento" prefWidth="80.7999267578125" text="dataNasc" />
+        </columns>
+      </TableView>
+      <ChoiceBox fx:id="caixaFiltro" layoutX="176.0" layoutY="55.0" prefWidth="150.0" />
+      <Text layoutX="131.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filtro:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnVoltar" layoutX="283.0" layoutY="439.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: RED;" text="voltar" textFill="WHITE" />
+      <Button fx:id="btnConfirmar" layoutX="360.0" layoutY="55.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #287b10;" text="aplicar" textFill="WHITE" />
+    </children>
+</AnchorPane>
